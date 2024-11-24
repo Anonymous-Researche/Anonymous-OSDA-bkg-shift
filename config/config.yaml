@@ -1,0 +1,66 @@
+defaults:
+  - trainer: default.yaml
+  - datamodule: default.yaml
+  - models: default.yaml
+  - logger: wandb.yaml
+  - hydra: default.yaml
+  - _self_
+
+work_dir: "/cis/home/schaud35/shiftpu"
+data_dir: "/export/r36a/data/schaud35/shiftpu/" # "/cis/net/r36a/data/schaud35/shiftpu"
+#work_dir: "/Users/yoavw/Documents/University/ResearchDirections/shiftpu/work"
+#data_dir: "/Users/yoavw/Documents/University/ResearchDirections/shiftpu/data"
+log_dir: ${work_dir}/${log_loc}
+output_dir: ${data_dir}/outputs/
+pretrained_model_dir: ${work_dir}/pretrained_models/
+device: "cuda"
+# pretrained_model_path: "/cis/home/schaud35/shiftpu/shiftpu/multirun/2023-08-21/14-42-30/0/models/discriminator_model.pth" # ood 0.025
+# pretrained_model_path: "/cis/home/schaud35/shiftpu/shiftpu/multirun/2023-08-21/vanillaPU_ood_ratio_0.25_seed_8/0/models/discriminator_model.pth" # abs ood 0.05
+pretrained_model_path: "/export/r36a/data/schaud35/shiftpu/models/" # abs ood 0.1
+
+# path to folder with data
+data_loc: data
+log_loc: logs
+
+# Additional dataset hyperparams
+seed: 42
+dataset: "CIFAR10"
+arch: "Resnet18"
+num_source_classes: 10
+fraction_ood_class: 0.1
+#frac_of_new_class: 0.5
+train_fraction: 0.8
+num_superclasses: 2
+num_ood_class: 1
+batch_size: 200
+mode: 'domain_disc'
+
+# Additional model hyperparams
+learning_rate: 0.01
+optimizer: "sgd"
+weight_decay: 0.0005
+pretrained: False
+max_epochs: 200
+separate: False
+dual_learning_rate: 2e-2
+target_recall: 0.05
+precision_confidence: 0.95
+target_precision: 0.995
+source_at_val: False
+logit_multiplier: 2.0
+warmup_epochs: 0
+warmup_patience: 20
+ood_class: 0
+ood_class_ratio: 0.005
+constrained_penalty: 1e-2
+save_model_path: "/cis/home/schaud35/shiftpu/models/"
+use_superclass: False
+use_labels: False
+clip: 5.0
+ood_subclass: ''
+
+# sarem:
+refit: False
+
+# nnPU:
+nnPU: True

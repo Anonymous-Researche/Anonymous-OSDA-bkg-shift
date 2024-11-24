@@ -1,0 +1,17 @@
+# @package _group_
+_target_: src.imagenet_datamodule.SubpopulationShiftDataModule
+data_dir: ${data_dir} 
+dataset: ${dataset}
+num_source_classes: ${num_source_classes}
+fraction_ood_class: ${fraction_ood_class}
+#frac_of_new_class: ${frac_of_new_class}
+train_fraction: ${train_fraction}
+use_aug: True
+batch_size: ${batch_size}
+mode: ${mode}
+seed: ${seed} # NOTICE: original codebase had this fixed at 42, seems wrong to work with same shift every time...
+ood_class: ${ood_class}
+ood_class_ratio: ${ood_class_ratio}
+arch: ${arch}
+use_superclass: ${use_superclass}
+ood_subclass: ${ood_subclass}

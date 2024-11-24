@@ -1,0 +1,6 @@
+# @package _group_
+_target_: pytorch_lightning.Trainer
+
+devices: 1
+accelerator: 'gpu'
+max_epochs: ${models.max_epochs}
